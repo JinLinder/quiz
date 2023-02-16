@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { CardWrapper } from "./style/StyleCard";
+import { CardWrapper } from "../style/StyleCard";
 export default function FlashCard({ flashcard }) {
   const [flip, setFlip] = useState(false);
 
