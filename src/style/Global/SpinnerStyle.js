@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {theme} from './Theme'
+import { theme } from "./Theme";
 
 export const SpinnerStyle = styled.div`
   color: white;

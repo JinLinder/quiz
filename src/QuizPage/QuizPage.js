@@ -1,18 +1,24 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Card from "./Card/Card.js";
+import Card from "./Card.js";
 import Score from "./Score";
-import Spinner from "./Spinner.js";
-import { QuizPageStyle, CardWrapper } from "./style/QuizPageStyle";
-
+import Spinner from "../Globle/Spinner.js";
+import { QuizPageStyle, CardWrapper } from "../style/QuizPage/QuizPageStyle";
+import { useSelector } from "react-redux";
 
 export default function QuizPage() {
   const [flashcards, setFlashcards] = useState();
   const [num, setNum] = useState(0);
-  const [score, setScore] = useState(0);
+  const select = useSelector((state) => state.select);
+
   const fetch = async () => {
     try {
-      const response = await axios.get("https://opentdb.com/api.php?amount=10");
+      const response = await axios.get("https://opentdb.com/api.php",{
+        params: {
+          amount:select.amount,
+          category: select.category
+        }
+      });
       const result = response.data.results.map((questionItem, index) => {
         const answer = decodeString(questionItem.correct_answer);
         const options = [
@@ -27,15 +33,13 @@ export default function QuizPage() {
           options: options.sort(() => Math.random() - 0.5),
         };
       });
-      //console.log(result);
+      console.log(result);
       setFlashcards(result);
     } catch (err) {
       console.log(err);
     }
   };
-  const handleScore = () => {
-    setScore(score + 1);
-  };
+
   useEffect(() => {
     fetch();
   }, []);
@@ -49,15 +53,13 @@ export default function QuizPage() {
   const playNext = () => {
     setNum(num + 1);
   };
-  console.log(flashcards);
+
   return (
     <QuizPageStyle>
-      <Score score={score} />
+      <Score />
       <CardWrapper>
         {flashcards ? (
           <Card
-            handleScore={handleScore}
-            flashcards={flashcards}
             flashcard={flashcards[num]}
             playNext={playNext}
             numOfQues={flashcards.length - 1}

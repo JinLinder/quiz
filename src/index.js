@@ -5,15 +5,19 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
-import scoreReducer from "./Reducer/scoreReducer";
+import allReducer from "./Reducer";
 
+import scoreReducer from "./Reducer/ScoreReducer";
 
-let store = createStore(scoreReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+let store = createStore(
+  allReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-  <Provider store= {store}>
+  <Provider store={store}>
     <React.StrictMode>
       <BrowserRouter>
         <App />

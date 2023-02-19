@@ -1,8 +1,8 @@
 import React from "react";
-import { SpinnerStyle } from "./style/SpinnerStyle";
+import { SpinnerStyle } from "../style/Global/SpinnerStyle";
 export default function Spinner() {
   return (
-    <SpinnerStyle class="lds-spinner">
+    <SpinnerStyle className="lds-spinner">
       <div></div>
       <div></div>
       <div></div>
