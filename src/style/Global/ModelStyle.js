@@ -10,7 +10,14 @@ export const ModalWrapper = styled.div`
     background-color: white;
     padding: 3rem;
     z-index: 1000;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.3);
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-content:center;
   }
+  
 
   .overLay {
     position: fixed;
@@ -21,4 +28,5 @@ export const ModalWrapper = styled.div`
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 1000;
   }
+
 `;

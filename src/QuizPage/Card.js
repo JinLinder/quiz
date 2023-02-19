@@ -6,6 +6,7 @@ import {
   NormalText,
   Button,
   CloseIcon,
+  RowC
 } from "../style/Global/GlobleStyle";
 import { scoreAction } from "../Actions/ScoreAction";
 import { useDispatch } from "react-redux";
@@ -64,14 +65,18 @@ export default function Card({ flashcard, playNext, numOfQues, num }) {
     setOpenModal(false);
   };
 
-  const handleQuit = () => {};
+  const handleQuit = () => {
+    navigate("/");
+  };
 
   return (
     <>
       <Modal open={openModal} closeModal={closeModal}>
-        This is the a Modal
-        <button onClick={closeModal}>Cancle</button>
-        <button onClick={handleQuit}>Quit</button>
+        <Title>Are you sure you want to quit?</Title>
+        <RowC><Button onClick={closeModal}>No</Button>
+        <Button onClick={handleQuit}>Yes</Button></RowC>
+    
+        
       </Modal>
       <CardWrapper className={`card ${flip ? "flip" : ""}`} flip={flip}>
         {!flip ? (

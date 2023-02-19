@@ -115,6 +115,13 @@ export const ButtonUnable = styled.button`
   }
 `;
 
+export const RowC = styled.div`
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-content: center;
+`
+
 export const Input = styled.input`
   color: ${theme.colors.mediumBrown};
   margin: auto;
