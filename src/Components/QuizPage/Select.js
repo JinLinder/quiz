@@ -1,21 +1,16 @@
 import React, { useRef, useEffect, useState } from "react";
 import axios from "axios";
-import { Form } from "../style/QuizPage/SelectStyle";
-import { selectAction } from "../Actions/SelectAction";
+import { Form } from "../../style/QuizPage/SelectStyle";
+import { selectAction } from "../../Actions/SelectAction";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Button, ButtonUnable, Input, SelectBox } from "../style/Global/GlobleStyle";
+import { Button, ButtonUnable, Input, SelectBox } from "../../style/Global/GlobleStyle";
 
 export default function Select() {
   const [categories, setCategories] = useState();
   const [amount, setAmount] = useState(10);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const handleStart = () => {
-    console.log("Start");
-    navigate("/quiz");
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();

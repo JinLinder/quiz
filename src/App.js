@@ -1,10 +1,10 @@
 import React from "react";
-import QuizPage from "./QuizPage/QuizPage";
+import QuizPage from "./Components/QuizPage/QuizPage";
 import { Routes, Route } from "react-router-dom";
-import Home from "./Home";
+import Home from "./Components/Home";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./style/Global/Theme";
-import Select from "./QuizPage/Select";
+import Select from "./Components/QuizPage/Select"
 
 function App() {
   return (

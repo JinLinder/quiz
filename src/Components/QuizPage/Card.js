@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { CardWrapper } from "../style/QuizPage/CardStyle";
+import { CardWrapper } from "../../style/QuizPage/CardStyle"
 import { useNavigate } from "react-router-dom";
 import {
   Title,
@@ -7,11 +7,11 @@ import {
   Button,
   CloseIcon,
   RowC,
-} from "../style/Global/GlobleStyle";
-import { scoreAction } from "../Actions/ScoreAction";
+} from "../../style/Global/GlobleStyle";
+import { scoreAction } from "../../Actions/ScoreAction"
 import { useDispatch, useSelector } from "react-redux";
-import { resetAction } from "../Actions/SelectAction";
-import Modal from "../Globle/Modal";
+import { resetAction } from "../../Actions/SelectAction";
+import Modal from "../Globle/Modal"
 
 export default function Card({ flashcard, playNext, numOfQues, num }) {
   const [flip, setFlip] = useState(false);

@@ -3,7 +3,7 @@ import axios from "axios";
 import Card from "./Card.js";
 import Score from "./Score";
 import Spinner from "../Globle/Spinner.js";
-import { QuizPageStyle, CardWrapper } from "../style/QuizPage/QuizPageStyle";
+import { QuizPageStyle, CardWrapper } from "../../style/QuizPage/QuizPageStyle";
 import { useSelector } from "react-redux";
 
 export default function QuizPage() {

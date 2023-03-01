@@ -1,6 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { ModalWrapper } from "../style/Global/ModelStyle";
+import { ModalWrapper } from "../../style/Global/ModelStyle";
 import ReactDOM from "react-dom";
 
 export default function Modal({ children, open }) {

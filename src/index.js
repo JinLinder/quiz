@@ -7,7 +7,7 @@ import { createStore } from "redux";
 import { Provider } from "react-redux";
 import allReducer from "./Reducer";
 
-import scoreReducer from "./Reducer/ScoreReducer";
+// import scoreReducer from "./Reducer/scoreReducer";
 
 let store = createStore(
   allReducer,
