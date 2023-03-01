@@ -6,10 +6,10 @@ import {
   NormalText,
   Button,
   CloseIcon,
-  RowC
+  RowC,
 } from "../style/Global/GlobleStyle";
 import { scoreAction } from "../Actions/ScoreAction";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { resetAction } from "../Actions/SelectAction";
 import Modal from "../Globle/Modal";
 
@@ -18,18 +18,18 @@ export default function Card({ flashcard, playNext, numOfQues, num }) {
   const [msg, setMsg] = useState("");
   const [chosenAns, setChosenAns] = useState("");
   const [selected, setSelected] = useState({ checked: false, item: null });
-  const [openModal, setOpenModal] = useState(false);
+  const [finishModal, setFinishModal] = useState(false);
+  const [quitModal, setQuitModal] = useState(false);
 
+  const score = useSelector((state) => state.score);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
-    // e.preventdefault();
     setFlip(!flip);
     setSelected({ checked: false, item: null });
     if (chosenAns && chosenAns === flashcard.answer) {
       setMsg("Good job!");
-      // handleScore();
       dispatch(scoreAction());
     } else {
       setMsg(`Opps! The correct answer is ${flashcard.answer}.`);
@@ -50,19 +50,26 @@ export default function Card({ flashcard, playNext, numOfQues, num }) {
     playNext();
   };
 
-  const handleFinishBtn = () => {
+  const handleFinishBtn = async () => {
+    setFinishModal(true);
+    dispatch(resetAction());
+    setTimeout(() => {
+      setFinishModal(false);
+      navigate("/");
+    }, 3000);
+  };
+
+  const handleStartNew = () => {
     navigate("/");
-    console.log("finished");
-    dispatch(resetAction({ category: 10, amount: 2 }));
+
   };
 
   const handleCancle = () => {
-    // navigate("/");
-    setOpenModal(true);
+    setQuitModal(true);
   };
 
   const closeModal = () => {
-    setOpenModal(false);
+    setQuitModal(false);
   };
 
   const handleQuit = () => {
@@ -71,13 +78,20 @@ export default function Card({ flashcard, playNext, numOfQues, num }) {
 
   return (
     <>
-      <Modal open={openModal} closeModal={closeModal}>
-        <Title>Are you sure you want to quit?</Title>
-        <RowC><Button onClick={closeModal}>No</Button>
-        <Button onClick={handleQuit}>Yes</Button></RowC>
-    
-        
-      </Modal>
+      {quitModal ? (
+        <Modal open={quitModal}>
+          <Title>Are you sure you want to quit?</Title>
+          <RowC>
+            <Button onClick={closeModal}>No</Button>
+            <Button onClick={handleQuit}>Yes</Button>
+          </RowC>
+        </Modal>
+      ) : finishModal ? (
+        <Modal open={finishModal}>
+          <Title>Hope you hade fun! Your score is {score}</Title>
+        </Modal>
+      ) : null}
+
       <CardWrapper className={`card ${flip ? "flip" : ""}`} flip={flip}>
         {!flip ? (
           <div className="front">
@@ -118,8 +132,8 @@ export default function Card({ flashcard, playNext, numOfQues, num }) {
               <Button onClick={handleNext}>Next</Button>
             ) : (
               <>
-                <Button>Start a new Challenge</Button>
-                <Button onClick={handleFinishBtn}>Finished</Button>
+                <Button onClick={handleStartNew}>Start a new Challenge</Button>
+                <Button onClick={handleFinishBtn}>Finish</Button>
               </>
             )}
           </div>

@@ -19,6 +19,7 @@ export default function QuizPage() {
           category: select.category
         }
       });
+      console.log(response.data.results);
       const result = response.data.results.map((questionItem, index) => {
         const answer = decodeString(questionItem.correct_answer);
         const options = [
