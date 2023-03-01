@@ -4,7 +4,6 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./Components/Home";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./style/Global/Theme";
-import Select from "./Components/QuizPage/Select"
 
 function App() {
   return (
