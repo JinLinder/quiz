@@ -14,8 +14,6 @@ export default function Select() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(amountEl.current.value);
-    console.log(categoryEl.current.value);
     dispatch(
       selectAction({
         category: categoryEl.current.value,
@@ -33,10 +31,9 @@ export default function Select() {
   const getCategories = async () => {
     try {
       const response = await axios.get("https://opentdb.com/api_category.php");
-      console.log(response.data.trivia_categories);
       setCategories(response.data.trivia_categories);
     } catch (err) {
-      console.log(err);
+     // console.log(err);
     }
   };
 
@@ -46,7 +43,6 @@ export default function Select() {
   useEffect(() => {
     getCategories();
   }, []);
-  console.log(amount)
 
   return (
     <Form className="header" onSubmit={handleSubmit}>

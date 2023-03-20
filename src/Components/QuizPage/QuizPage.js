@@ -19,7 +19,6 @@ export default function QuizPage() {
           category: select.category
         }
       });
-      console.log(response.data.results);
       const result = response.data.results.map((questionItem, index) => {
         const answer = decodeString(questionItem.correct_answer);
         const options = [
@@ -34,10 +33,9 @@ export default function QuizPage() {
           options: options.sort(() => Math.random() - 0.5),
         };
       });
-      console.log(result);
       setFlashcards(result);
     } catch (err) {
-      console.log(err);
+      //console.log(err);
     }
   };
 

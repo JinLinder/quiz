@@ -34,7 +34,6 @@ export default function Card({ flashcard, playNext, numOfQues, num }) {
     } else {
       setMsg(`Opps! The correct answer is ${flashcard.answer}.`);
     }
-    console.log(msg);
   };
 
   const message = () => {
@@ -45,7 +44,6 @@ export default function Card({ flashcard, playNext, numOfQues, num }) {
     setSelected({ checked: e.target.checked, item: e.target.name });
   };
   const handleNext = () => {
-    console.log(selected.checked, selected.item);
     setFlip(!flip);
     playNext();
   };
