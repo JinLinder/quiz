@@ -192,5 +192,16 @@ export const CloseIcon = styled(XCircleFill)`
   &:hover {
     opacity: 70%;
     cursor: pointer;
+  };
+  @media ${theme.devices.mobileS} {
+    height: 1rem;
+    width: 1rem;
   }
+
+  @media ${theme.devices.mobileM} {
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+
+
 `;
